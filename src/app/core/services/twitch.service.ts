@@ -8,6 +8,7 @@ import { IJoinContract } from '../dataContract/ijoin-contract';
 
 import { Chat } from '../classes/chat';
 import { Join } from '../classes/join';
+import { Part } from '../classes/part';
 
 import Twitch from 'twitch-js';
 
@@ -35,7 +36,7 @@ export class TwitchService {
     });
   }
 
-  public subscribeTwitch(): void {
+  public subscribeEventsTwitch(): void {
     this.twitchSubscription = new Observable(observer => {
       // Chat Messages
       const chat = new Chat(this.twitchClient);
@@ -49,9 +50,16 @@ export class TwitchService {
         this.chatArray.push(joinMessages);
         observer.next(this.chatArray);
       });
+      // Part Messages
+      const part = new Part(this.twitchClient);
+      const partSubscription = part.getPayload().subscribe((partMessages: IJoinContract) => {
+        this.chatArray.push(partMessages);
+        observer.next(this.chatArray);
+      });
       // Push Subscriptions to Array for Unsubscription later
       this.allSubscriptions.push(chatSubscription);
       this.allSubscriptions.push(joinSubscription);
+      this.allSubscriptions.push(partSubscription);
     });
   }
 

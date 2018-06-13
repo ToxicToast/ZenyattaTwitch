@@ -16,7 +16,7 @@ export class AppComponent {
     private twitch: TwitchService
   ) {
     twitch.init();
-    twitch.subscribeTwitch();
+    twitch.subscribeEventsTwitch();
     this.twitchSubscription = twitch.twitchSubscription;
     twitch.destroy();
   }
