@@ -9,6 +9,8 @@ import { IJoinContract } from '../dataContract/ijoin-contract';
 import { Chat } from '../classes/chat';
 import { Join } from '../classes/join';
 import { Part } from '../classes/part';
+import { Ban } from '../classes/ban';
+import { Cheer } from '../classes/cheer';
 
 import Twitch from 'twitch-js';
 
@@ -57,10 +59,35 @@ export class TwitchService {
         observer.next(this.chatArray);
       });
       // Ban Messages
+      const ban = new Ban(this.twitchClient);
+      const banSubscription = ban.getPayload().subscribe((banMessages) => {
+        this.chatArray.push(banMessages);
+        observer.next(this.chatArray);
+      });
       // Cheer Messages
+      const cheer = new Ban(this.twitchClient);
+      const cheerSubscription = cheer.getPayload().subscribe((cheerMessages) => {
+        this.chatArray.push(cheerMessages);
+        observer.next(this.chatArray);
+      });
       // Clearchat Messages
+      const clearchat = new Ban(this.twitchClient);
+      const clearchatSubscription = clearchat.getPayload().subscribe((clearchatMessages) => {
+        this.chatArray.push(clearchatMessages);
+        observer.next(this.chatArray);
+      });
       // Connected Messages
+      const connected = new Ban(this.twitchClient);
+      const connectedSubscription = connected.getPayload().subscribe((connectedMessages) => {
+        this.chatArray.push(connectedMessages);
+        observer.next(this.chatArray);
+      });
       // Connecting Messages
+      const connecting = new Ban(this.twitchClient);
+      const connectingSubscription = connecting.getPayload().subscribe((connectingMessages) => {
+        this.chatArray.push(connectingMessages);
+        observer.next(this.chatArray);
+      });
       // Disconnected Messages
       // Hosted Messages
       // Hosting Messages
@@ -78,6 +105,11 @@ export class TwitchService {
       this.allSubscriptions.push(chatSubscription);
       this.allSubscriptions.push(joinSubscription);
       this.allSubscriptions.push(partSubscription);
+      this.allSubscriptions.push(banSubscription);
+      this.allSubscriptions.push(cheerSubscription);
+      this.allSubscriptions.push(clearchatSubscription);
+      this.allSubscriptions.push(connectedSubscription);
+      this.allSubscriptions.push(connectingSubscription);
     });
   }
 
