@@ -56,6 +56,24 @@ export class TwitchService {
         this.chatArray.push(partMessages);
         observer.next(this.chatArray);
       });
+      // Ban Messages
+      // Cheer Messages
+      // Clearchat Messages
+      // Connected Messages
+      // Connecting Messages
+      // Disconnected Messages
+      // Hosted Messages
+      // Hosting Messages
+      // Logon Messages
+      // Mod Messages
+      // Raid Messages
+      // Reconnect Messages
+      // Resub Messages
+      // Ritual Messages
+      // Subgift Messages
+      // Subscription Messages
+      // Timeout Messages
+      // Unhost Messages
       // Push Subscriptions to Array for Unsubscription later
       this.allSubscriptions.push(chatSubscription);
       this.allSubscriptions.push(joinSubscription);
