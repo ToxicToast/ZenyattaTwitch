@@ -6,6 +6,8 @@ import { JoinComponent } from './components/join/join.component';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { ChatComponent } from './components/chat/chat.component';
 import { PartComponent } from './components/part/part.component';
+import { HostedComponent } from './components/hosted/hosted.component';
+import { HostingComponent } from './components/hosting/hosting.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { PartComponent } from './components/part/part.component';
   declarations: [
     JoinComponent,
     ChatComponent,
-    PartComponent
+    PartComponent,
+    HostedComponent,
+    HostingComponent
   ],
   providers: [
     TwitchService
@@ -25,6 +29,8 @@ import { PartComponent } from './components/part/part.component';
     JoinComponent,
     ChatComponent,
     PartComponent,
+    HostedComponent,
+    HostingComponent,
     MatCardModule,
     MatButtonModule
   ]
