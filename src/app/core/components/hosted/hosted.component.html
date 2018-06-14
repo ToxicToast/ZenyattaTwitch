@@ -1,0 +1,7 @@
+<div class="alert alert-primary">
+    <span>
+  <b *ngIf="!autohost"> {{ channel }} hosted {{ username }}</b>
+  <b *ngIf="autohost"> {{ channel }} autohost {{ username }}</b>
+  <b>{{ viewers }}</b>
+</span>
+</div>
