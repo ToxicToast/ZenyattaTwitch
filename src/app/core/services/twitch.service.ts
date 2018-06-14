@@ -4,7 +4,26 @@ import { environment } from '../../../environments/environment';
 
 import {
   IChatContract,
-  IJoinContract
+  IJoinContract,
+  IPartContract,
+  IBanContract,
+  ICheerContract,
+  IClearchatContract,
+  IConnectedContract,
+  IConnectingContract,
+  IDisconnectedContract,
+  IHostedContract,
+  IHostingContract,
+  ILogonContract,
+  IModContract,
+  IRaidContract,
+  IReconnectContract,
+  IResubContract,
+  IRitualContract,
+  ISubgiftContract,
+  ISubscriptionContract,
+  ITimeoutContract,
+  IUnhostContract
 } from '../dataContract';
 
 import { ITwitchOptions } from '../interfaces/itwitch-options';
@@ -75,115 +94,115 @@ export class TwitchService {
       });
       // Part Messages
       const part = new Part(this.twitchClient);
-      const partSubscription = part.getPayload().subscribe((partMessages: IJoinContract) => {
+      const partSubscription = part.getPayload().subscribe((partMessages: IPartContract) => {
         this.chatArray.push(partMessages);
         observer.next(this.chatArray);
       });
       // Ban Messages
       const ban = new Ban(this.twitchClient);
-      const banSubscription = ban.getPayload().subscribe((banMessages) => {
+      const banSubscription = ban.getPayload().subscribe((banMessages: IBanContract) => {
         this.chatArray.push(banMessages);
         observer.next(this.chatArray);
       });
       // Cheer Messages
       const cheer = new Cheer(this.twitchClient);
-      const cheerSubscription = cheer.getPayload().subscribe((cheerMessages) => {
+      const cheerSubscription = cheer.getPayload().subscribe((cheerMessages: ICheerContract) => {
         this.chatArray.push(cheerMessages);
         observer.next(this.chatArray);
       });
       // Clearchat Messages
       const clearchat = new Clearchat(this.twitchClient);
-      const clearchatSubscription = clearchat.getPayload().subscribe((clearchatMessages) => {
+      const clearchatSubscription = clearchat.getPayload().subscribe((clearchatMessages: IClearchatContract) => {
         this.chatArray.push(clearchatMessages);
         observer.next(this.chatArray);
       });
       // Connected Messages
       const connected = new Connected(this.twitchClient);
-      const connectedSubscription = connected.getPayload().subscribe((connectedMessages) => {
+      const connectedSubscription = connected.getPayload().subscribe((connectedMessages: IConnectedContract) => {
         this.chatArray.push(connectedMessages);
         observer.next(this.chatArray);
       });
       // Connecting Messages
       const connecting = new Connecting(this.twitchClient);
-      const connectingSubscription = connecting.getPayload().subscribe((connectingMessages) => {
+      const connectingSubscription = connecting.getPayload().subscribe((connectingMessages: IConnectingContract) => {
         this.chatArray.push(connectingMessages);
         observer.next(this.chatArray);
       });
       // Disconnected Messages
       const disconnected = new Disconnected(this.twitchClient);
-      const disconnectedSubscription = disconnected.getPayload().subscribe((disconnectedMessages) => {
+      const disconnectedSubscription = disconnected.getPayload().subscribe((disconnectedMessages: IDisconnectedContract) => {
         this.chatArray.push(disconnectedMessages);
         observer.next(this.chatArray);
       });
       // Hosted Messages
       const hosted = new Hosted(this.twitchClient);
-      const hostedSubscription = hosted.getPayload().subscribe((hostedMessages) => {
+      const hostedSubscription = hosted.getPayload().subscribe((hostedMessages: IHostedContract) => {
         this.chatArray.push(hostedMessages);
         observer.next(this.chatArray);
       });
       // Hosting Messages
       const hosting = new Hosting(this.twitchClient);
-      const hostingSubscription = hosting.getPayload().subscribe((hostingMessages) => {
+      const hostingSubscription = hosting.getPayload().subscribe((hostingMessages: IHostingContract) => {
         this.chatArray.push(hostingMessages);
         observer.next(this.chatArray);
       });
       // Logon Messages
       const logon = new Logon(this.twitchClient);
-      const logonSubscription = logon.getPayload().subscribe((logonMessages) => {
+      const logonSubscription = logon.getPayload().subscribe((logonMessages: ILogonContract) => {
         this.chatArray.push(logonMessages);
         observer.next(this.chatArray);
       });
       // Mod Messages
       const mod = new Mod(this.twitchClient);
-      const modSubscription = mod.getPayload().subscribe((modMessages) => {
+      const modSubscription = mod.getPayload().subscribe((modMessages: IModContract) => {
         this.chatArray.push(modMessages);
         observer.next(this.chatArray);
       });
       // Raid Messages
       const raid = new Raid(this.twitchClient);
-      const raidSubscription = raid.getPayload().subscribe((raidMessages) => {
+      const raidSubscription = raid.getPayload().subscribe((raidMessages: IRaidContract) => {
         this.chatArray.push(raidMessages);
         observer.next(this.chatArray);
       });
       // Reconnect Messages
       const reconnect = new Reconnect(this.twitchClient);
-      const reconnectSubscription = reconnect.getPayload().subscribe((reconnectMessages) => {
+      const reconnectSubscription = reconnect.getPayload().subscribe((reconnectMessages: IReconnectContract) => {
         this.chatArray.push(reconnectMessages);
         observer.next(this.chatArray);
       });
       // Resub Messages
       const resub = new Resub(this.twitchClient);
-      const resubSubscription = resub.getPayload().subscribe((resubMessages) => {
+      const resubSubscription = resub.getPayload().subscribe((resubMessages: IResubContract) => {
         this.chatArray.push(resubMessages);
         observer.next(this.chatArray);
       });
       // Ritual Messages
       const ritual = new Ritual(this.twitchClient);
-      const ritualSubscription = ritual.getPayload().subscribe((ritualMessages) => {
+      const ritualSubscription = ritual.getPayload().subscribe((ritualMessages: IRitualContract) => {
         this.chatArray.push(ritualMessages);
         observer.next(this.chatArray);
       });
       // Subgift Messages
       const subgift = new Subgift(this.twitchClient);
-      const subgiftSubscription = subgift.getPayload().subscribe((subgiftMessages) => {
+      const subgiftSubscription = subgift.getPayload().subscribe((subgiftMessages: ISubgiftContract) => {
         this.chatArray.push(subgiftMessages);
         observer.next(this.chatArray);
       });
       // Subscription Messages
       const subscription = new Subscription(this.twitchClient);
-      const subscriptionSubscription = subscription.getPayload().subscribe((subscriptionMessages) => {
+      const subscriptionSubscription = subscription.getPayload().subscribe((subscriptionMessages: ISubscriptionContract) => {
         this.chatArray.push(subscriptionMessages);
         observer.next(this.chatArray);
       });
       // Timeout Messages
       const timeout = new Timeout(this.twitchClient);
-      const timeoutSubscription = timeout.getPayload().subscribe((timeoutMessages) => {
+      const timeoutSubscription = timeout.getPayload().subscribe((timeoutMessages: ITimeoutContract) => {
         this.chatArray.push(timeoutMessages);
         observer.next(this.chatArray);
       });
       // Unhost Messages
       const unhost = new Unhost(this.twitchClient);
-      const unhostSubscription = unhost.getPayload().subscribe((unhostMessages) => {
+      const unhostSubscription = unhost.getPayload().subscribe((unhostMessages: IUnhostContract) => {
         this.chatArray.push(unhostMessages);
         observer.next(this.chatArray);
       });
