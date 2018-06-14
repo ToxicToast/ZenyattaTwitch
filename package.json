@@ -8,8 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "version": "standard-version",
-        "publish": "git push --follow-tags origin master"
+        "version": "standard-version"
     },
     "private": true,
     "dependencies": {
