@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 
 import {
   IChatContract,
@@ -24,9 +24,9 @@ import {
   ISubscriptionContract,
   ITimeoutContract,
   IUnhostContract
-} from '../dataContract';
+} from '@core/dataContract';
 
-import { ITwitchOptions } from '../interfaces/itwitch-options';
+import { ITwitchOptions } from '@core/interfaces/itwitch-options';
 
 import {
   Chat,
@@ -50,7 +50,7 @@ import {
   Subscription,
   Timeout,
   Unhost
-} from '../classes';
+} from '@core/classes';
 
 import Twitch from 'twitch-js';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IUserState } from '../../dataContract/iuser-state';
+import { IUserState } from '@core/dataContract/iuser-state';
 
 
 @Component({
