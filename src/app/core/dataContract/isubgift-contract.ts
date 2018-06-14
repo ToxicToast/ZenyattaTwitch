@@ -1,4 +1,4 @@
-import { IUserState } from "./iuser-state";
+import { IUserState } from './iuser-state';
 
 export interface ISubgiftContract {
   channel: string;
