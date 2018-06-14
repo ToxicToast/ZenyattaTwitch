@@ -23,7 +23,11 @@ export class ChatComponent implements OnInit {
   }
 
   get usercolor(): string {
-    return this.userstate.color;
+    let color = this.userstate.color;
+    if (color === '') {
+      color = '#000000';
+    }
+    return color;
   }
 
 }
