@@ -7,7 +7,7 @@ export const environment = {
   twitch: {
     username: 'toxictoast',
     password: 'oauth:pgf8i660ewx566e9mbederyezht00f',
-    channels: ['#toxictoast'],
+    channels: ['#tazzdingo'],
     clientID: ''
   }
 };
