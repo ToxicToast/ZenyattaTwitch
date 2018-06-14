@@ -10,14 +10,14 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'zenyatta';
 
-  twitchSubscription: Observable<any>;
+  twitchSubscription$: Observable<any>;
 
   constructor(
     private twitch: TwitchService
   ) {
     twitch.init();
     twitch.subscribeEventsTwitch();
-    this.twitchSubscription = twitch.twitchSubscription;
+    this.twitchSubscription$ = twitch.twitchSubscription;
     twitch.destroy();
   }
 }
