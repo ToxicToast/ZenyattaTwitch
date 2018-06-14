@@ -5,6 +5,7 @@ import { JoinComponent } from './components/join/join.component';
 
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { ChatComponent } from './components/chat/chat.component';
+import { PartComponent } from './components/part/part.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ChatComponent } from './components/chat/chat.component';
   ],
   declarations: [
     JoinComponent,
-    ChatComponent
+    ChatComponent,
+    PartComponent
   ],
   providers: [
     TwitchService
@@ -22,6 +24,7 @@ import { ChatComponent } from './components/chat/chat.component';
   exports: [
     JoinComponent,
     ChatComponent,
+    PartComponent,
     MatCardModule,
     MatButtonModule
   ]
