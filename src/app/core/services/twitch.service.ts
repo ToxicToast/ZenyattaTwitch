@@ -2,31 +2,36 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-import { ITwitchOptions } from '../interfaces/itwitch-options';
-import { IChatContract } from '../dataContract/ichat-contract';
-import { IJoinContract } from '../dataContract/ijoin-contract';
+import {
+  IChatContract,
+  IJoinContract
+} from '../dataContract';
 
-import { Chat } from '../classes/chat';
-import { Join } from '../classes/join';
-import { Part } from '../classes/part';
-import { Ban } from '../classes/ban';
-import { Cheer } from '../classes/cheer';
-import { Clearchat } from '../classes/clearchat';
-import { Connected } from '../classes/connected';
-import { Connecting } from '../classes/connecting';
-import { Disconnected } from '../classes/disconnected';
-import { Hosted } from '../classes/hosted';
-import { Hosting } from '../classes/hosting';
-import { Logon } from '../classes/logon';
-import { Mod } from '../classes/mod';
-import { Raid } from '../classes/raid';
-import { Reconnect } from '../classes/reconnect';
-import { Resub } from '../classes/resub';
-import { Ritual } from '../classes/ritual';
-import { Subgift } from '../classes/subgift';
-import { Subscription } from '../classes/subscription';
-import { Timeout } from '../classes/timeout';
-import { Unhost } from '../classes/unhost';
+import { ITwitchOptions } from '../interfaces/itwitch-options';
+
+import {
+  Chat,
+  Join,
+  Part,
+  Ban,
+  Cheer,
+  Clearchat,
+  Connected,
+  Connecting,
+  Disconnected,
+  Hosted,
+  Hosting,
+  Logon,
+  Mod,
+  Raid,
+  Reconnect,
+  Resub,
+  Ritual,
+  Subgift,
+  Subscription,
+  Timeout,
+  Unhost
+} from '../classes';
 
 import Twitch from 'twitch-js';
 
