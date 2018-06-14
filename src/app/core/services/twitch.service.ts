@@ -122,9 +122,7 @@ export class TwitchService {
         reconnect: true,
         secure: true
       },
-      channels: [
-        '#youbetterknowme'
-      ],
+      channels: environment.twitch.channels,
       identity: {
         username: environment.twitch.username,
         password: environment.twitch.password
