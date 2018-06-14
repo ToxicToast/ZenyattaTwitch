@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12" *ngFor="let twitch of twitchSubscription$ | async">
             <zenyatta-join *ngIf="twitch.type === 'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
-            <div *ngIf="twitch.type !== 'join'">
+            <zenyatta-chat *ngIf="twitch.type === 'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
+            <div *ngIf="twitch.type !== 'join' && twitch.type !== 'chat'">
                 {{ twitch | json }}
                 <hr>
             </div>
