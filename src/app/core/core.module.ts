@@ -8,6 +8,7 @@ import { ChatComponent } from '@core/components/chat/chat.component';
 import { PartComponent } from '@core/components/part/part.component';
 import { HostedComponent } from '@core/components/hosted/hosted.component';
 import { HostingComponent } from '@core/components/hosting/hosting.component';
+import { LayoutComponent } from '@core/components/layout/layout.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { HostingComponent } from '@core/components/hosting/hosting.component';
     ChatComponent,
     PartComponent,
     HostedComponent,
-    HostingComponent
+    HostingComponent,
+    LayoutComponent
   ],
   providers: [
     TwitchService
@@ -31,6 +33,7 @@ import { HostingComponent } from '@core/components/hosting/hosting.component';
     PartComponent,
     HostedComponent,
     HostingComponent,
+    LayoutComponent,
     MatCardModule,
     MatButtonModule
   ]

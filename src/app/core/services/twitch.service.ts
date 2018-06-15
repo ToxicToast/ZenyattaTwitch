@@ -78,7 +78,7 @@ export class TwitchService {
     });
   }
 
-  public subscribeEventsTwitch(): void {
+  public subscribeEventsTwitch() {
     this.twitchSubscription = new Observable(observer => {
       // Chat Messages
       const chat = new Chat(this.twitchClient);
@@ -229,6 +229,8 @@ export class TwitchService {
       this.allSubscriptions.push(timeoutSubscription);
       this.allSubscriptions.push(unhostSubscription);
     });
+
+    return this.twitchSubscription;
   }
 
   private setTwitchSettings(): void {
