@@ -16,6 +16,7 @@ export class Join {
           self,
           type: 'join'
         };
+        console.error(payload);
         observer.next(payload);
       });
     });

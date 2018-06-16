@@ -8,7 +8,7 @@ const routes: Routes = [
 
 const options = {
   useHash: true,
-  enableTracing: true
+  enableTracing: false
 };
 
 @NgModule({

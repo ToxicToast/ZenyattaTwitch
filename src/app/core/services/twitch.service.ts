@@ -236,7 +236,7 @@ export class TwitchService {
   private setTwitchSettings(): void {
     this.twitchOptions = {
       options: {
-        debug: true
+        debug: false
       },
       connection: {
         reconnect: true,
