@@ -17,6 +17,8 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
   twitchHosts: number;
   twitchMods: number;
   twitchSeconds: string;
+  twitchLastViewer: string;
+  twitchLastMessage: string;
   twitchArray: any[];
 
   constructor(
@@ -27,6 +29,8 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     this.twitchHosts = 0;
     this.twitchMods = 0;
     this.twitchSeconds = '';
+    this.twitchLastViewer = 'n/a';
+    this.twitchLastMessage = 'n/a';
     this.seconds = 0;
     this.twitchArray = [];
   }
@@ -43,6 +47,9 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     this.twitchMessages = 0;
     this.twitchHosts = 0;
     this.twitchArray = [];
+    this.twitchLastViewer = 'n/a';
+    this.twitchLastMessage = 'n/a';
+    this.twitchSeconds = '';
   }
 
   subscribeTo() {
@@ -57,6 +64,17 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
       this.twitchMessages = messages.length;
       this.twitchHosts = hosts.length;
       this.twitchMods = mod.length;
+      //
+      if (viewers.length > 0) {
+        if (viewers[(viewers.length - 1)].self !== true) {
+          this.twitchLastViewer = viewers[(viewers.length - 1)].username;
+        }
+      }
+      if (messages.length > 0) {
+        if (messages[(messages.length - 1)].self !== true) {
+          this.twitchLastMessage = messages[(messages.length - 1)].userstate.username;
+        }
+      }
       //
       this.twitchArray = sub;
     });

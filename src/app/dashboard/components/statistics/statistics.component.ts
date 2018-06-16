@@ -13,6 +13,8 @@ export class StatisticsComponent implements OnInit {
   @Input() hosts: number;
   @Input() mods: number;
   @Input() seconds: string;
+  @Input() lastViewer: string;
+  @Input() lastMessage: string;
 
   constructor() { }
 
