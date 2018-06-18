@@ -9,32 +9,20 @@ Zenyatta should help Streamers with Problems they Face all day long.
 # ToDo
 [] Add Angular 6 with CLI to this Repo
 
+
 [] Add Modules (Core, Dashboard)
+
 
 (Core should Contain all Single Use Components and Services like Twitch Service (Contains the Observer for Joins, Parts, and Chat Messages))
 
 [] Add Components (JoinComponent, PartComponent, MessageComponent)
 
+
 []  Add Twitch Commands (Join Channel, Leave Channel, Host Channel, Ban / Timeout User etc.)
+
 
 [] Add Bot Commands (Latest Blogpost, User Loyality System, Followed Since etc)
 
+
 [] Save Userobject to Database (only UserId, Username, Points, Firstseen, Lastseen)
 
-
-# Example TwitchObserver
-```
-this.chatSubsciption = new Observable(observer => {
-this.twitchClient.on('chat', (channel, userstate, message, self) => {
-const payload = {
-channel,
-userstate,
-message,
-self,
-type: 'chat'
-};
-this.chatArray.push(payload);
-observer.next(this.chatArray);
-});
-});
-```
