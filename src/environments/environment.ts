@@ -8,7 +8,7 @@ export const environment = {
     username: 'toxictoast',
     password: 'oauth:pgf8i660ewx566e9mbederyezht00f',
     channels: [
-      '#toxictoast'
+        '#toxictoast',
     ],
     clientID: ''
   }

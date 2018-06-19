@@ -15,8 +15,7 @@ export class ChatComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   get username(): string {
     return this.userstate.username;
