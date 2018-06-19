@@ -21,3 +21,4 @@ export * from '@core/dataContract/isubscription-contract';
 export * from '@core/dataContract/itimeout-contract';
 export * from '@core/dataContract/iunhost-contract';
 export * from '@core/dataContract/iuser-state';
+export * from '@core/dataContract/iapi-channel';

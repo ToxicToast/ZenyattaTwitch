@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TwitchService } from '../../../core/services/twitch.service';
 import * as moment from 'moment';
 import { environment } from '@env/environment';
+import { IApiChannel } from '@core/dataContract';
 
 
 
@@ -113,7 +114,7 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
 
   private getStreamTitle() {
     const channel = environment.twitch.username;
-    this.twitch.getTwitchApi(`channels/${channel}`, 'GET').subscribe(data => {
+    this.twitch.getTwitchApi(`channels/${channel}`, 'GET').subscribe((data: IApiChannel) => {
       this.twitchPayload.twitchTitle = data.status;
       this.twitchPayload.twitchGame = data.game;
       this.twitchPayload.twitchFollowers = data.followers;
@@ -121,8 +122,6 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
       this.twitchPayload.twitchAge = moment.duration(moment().diff(moment(data.created_at))).humanize();
       this.twitchPayload.twitchViews = data.views;
       this.twitchPayload.twitchPartner = data.partner;
-      //
-      console.error(data);
     });
   }
 
