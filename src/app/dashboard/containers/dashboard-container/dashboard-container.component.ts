@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TwitchService } from '../../../core/services/twitch.service';
 import * as moment from 'moment';
+import { environment } from '@env/environment';
 
 
 
@@ -17,10 +18,15 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     twitchHosts: 0,
     twitchMods: 0,
     twitchSeconds: '00:00:00',
-    twitchLastViewer: '',
-    twitchLastMessage: '',
-    twitchTitle: '',
-    twitchGame: ''
+    twitchLastViewer: 'n/a',
+    twitchLastMessage: 'n/a',
+    twitchTitle: 'n/a',
+    twitchGame: 'n/a',
+    twitchFollowers: 0,
+    twitchViews: 0,
+    twitchLogo: 'n/a',
+    twitchAge: 'n/a',
+    twitchPartner: false
   };
 
   private seconds: number;
@@ -29,15 +35,22 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
   constructor(
     private twitch: TwitchService
   ) {
-    this.twitchPayload.twitchViewers = 0;
-    this.twitchPayload.twitchMessages = 0;
-    this.twitchPayload.twitchHosts = 0;
-    this.twitchPayload.twitchMods = 0;
-    this.twitchPayload.twitchSeconds = '00:00:00';
-    this.twitchPayload.twitchLastViewer = 'n/a';
-    this.twitchPayload.twitchLastMessage = 'n/a';
-    this.twitchPayload.twitchTitle = 'n/a';
-    this.twitchPayload.twitchGame = 'n/a';
+    this.twitchPayload = {
+      twitchViewers: 0,
+      twitchMessages: 0,
+      twitchHosts: 0,
+      twitchMods: 0,
+      twitchSeconds: '00:00:00',
+      twitchLastViewer: 'n/a',
+      twitchLastMessage: 'n/a',
+      twitchTitle: 'n/a',
+      twitchGame: 'n/a',
+      twitchFollowers: 0,
+      twitchViews: 0,
+      twitchLogo: 'n/a',
+      twitchAge: 'n/a',
+      twitchPartner: false
+    };
     this.seconds = 0;
     this.twitchArray = [];
   }
@@ -51,14 +64,22 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.twitch.destroy();
-    this.twitchPayload.twitchViewers = 0;
-    this.twitchPayload.twitchMessages = 0;
-    this.twitchPayload.twitchHosts = 0;
-    this.twitchPayload.twitchLastViewer = 'n/a';
-    this.twitchPayload.twitchLastMessage = 'n/a';
-    this.twitchPayload.twitchSeconds = '00:00:00';
-    this.twitchPayload.twitchTitle = 'n/a';
-    this.twitchPayload.twitchGame = 'n/a';
+    this.twitchPayload = {
+      twitchViewers: 0,
+      twitchMessages: 0,
+      twitchHosts: 0,
+      twitchMods: 0,
+      twitchSeconds: '00:00:00',
+      twitchLastViewer: 'n/a',
+      twitchLastMessage: 'n/a',
+      twitchTitle: 'n/a',
+      twitchGame: 'n/a',
+      twitchFollowers: 0,
+      twitchViews: 0,
+      twitchLogo: 'n/a',
+      twitchAge: 'n/a',
+      twitchPartner: false
+    };
     this.twitchArray = [];
   }
 
@@ -91,9 +112,17 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
   }
 
   private getStreamTitle() {
-    this.twitch.getTwitchApi('channels/toxictoast', 'GET').subscribe(data => {
+    const channel = environment.twitch.username;
+    this.twitch.getTwitchApi(`channels/${channel}`, 'GET').subscribe(data => {
       this.twitchPayload.twitchTitle = data.status;
       this.twitchPayload.twitchGame = data.game;
+      this.twitchPayload.twitchFollowers = data.followers;
+      this.twitchPayload.twitchLogo = data.logo;
+      this.twitchPayload.twitchAge = moment.duration(moment().diff(moment(data.created_at))).humanize();
+      this.twitchPayload.twitchViews = data.views;
+      this.twitchPayload.twitchPartner = data.partner;
+      //
+      console.error(data);
     });
   }
 
