@@ -4,7 +4,7 @@
             <div class="card-header card-header-warning card-header-icon">
                 <div class="card-icon"><i class="material-icons">weekend</i></div>
                 <p class="card-category">Viewers</p>
-                <h3 class="card-title">{{ viewers }}</h3>
+                <h3 class="card-title">{{ payload.twitchViewers }}</h3>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
             <div class="card-header card-header-primary card-header-icon">
                 <div class="card-icon"><i class="material-icons">equalizer</i></div>
                 <p class="card-category">Messages</p>
-                <h3 class="card-title">{{ messages }}</h3>
+                <h3 class="card-title">{{ payload.twitchMessages }}</h3>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon"><i class="material-icons">store</i></div>
                 <p class="card-category">Hosts</p>
-                <h3 class="card-title">{{ hosts }}</h3>
+                <h3 class="card-title">{{ payload.twitchHosts }}</h3>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <div class="card-header card-header-danger card-header-icon">
                 <div class="card-icon"><i class="material-icons">access_time</i></div>
                 <p class="card-category">Streaming since</p>
-                <h3 class="card-title">{{ seconds }}</h3>
+                <h3 class="card-title">{{ payload.twitchSeconds }}</h3>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
             <div class="card-header card-header-rose card-header-icon">
                 <div class="card-icon"><i class="material-icons">perm_identity</i></div>
                 <p class="card-category">Moderators</p>
-                <h3 class="card-title">{{ mods }}</h3>
+                <h3 class="card-title">{{ payload.twitchMods }}</h3>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             <div class="card-header card-header-primary card-header-icon">
                 <div class="card-icon"><i class="material-icons">face</i></div>
                 <p class="card-category">Last Viewer</p>
-                <h3 class="card-title">{{ lastViewer }}</h3>
+                <h3 class="card-title">{{ payload.twitchLastViewer }}</h3>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
             <div class="card-header card-header-warning card-header-icon">
                 <div class="card-icon"><i class="material-icons">account_box</i></div>
                 <p class="card-category">Last Message</p>
-                <h3 class="card-title">{{ lastMessage }}</h3>
+                <h3 class="card-title">{{ payload.twitchLastMessage }}</h3>
             </div>
         </div>
     </div>

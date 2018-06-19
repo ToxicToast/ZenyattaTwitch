@@ -10,7 +10,7 @@ export const environment = {
     channels: [
         '#toxictoast',
     ],
-    clientID: ''
+    clientID: 'pu0zath2073g3qplw3d5kfntogi6qvb'
   }
 };
 

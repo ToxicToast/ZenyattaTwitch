@@ -1,25 +1,9 @@
-<!--<div class="container" style="display:none;">
-    <div class="row">
-        <div class="col-12" *ngFor="let twitch of twitchSubscription$ | async">
-            <zenyatta-join *ngIf="twitch.type === 'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
-            <zenyatta-part *ngIf="twitch.type === 'part'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-part>
-            <zenyatta-chat *ngIf="twitch.type === 'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
-            <zenyatta-hosted *ngIf="twitch.type === 'hosted'" [channel]="twitch.channel" [username]="twitch.username" [viewers]="twitch.viewers" [autohost]="twitch.autohost"></zenyatta-hosted>
-            <zenyatta-hosting *ngIf="twitch.type === 'hosting'" [channel]="twitch.channel" [target]="twitch.target" [viewers]="twitch.viewers"></zenyatta-hosting>
-            !-- --
-            <div *ngIf="twitch.type !== 'join' && twitch.type !== 'chat' && twitch.type !== 'part' && twitch.type !== 'hosted' && twitch.type !== 'hosting'">
-                {{ twitch | json }}
-                <hr>
-            </div>
-        </div>
-    </div>
-</div>-->
-
 <zenyatta-layout>
     <div class="main-content">
         <div class="container-fluid">
-            <zenyatta-statistics [viewers]="twitchViewers" [messages]="twitchMessages" [hosts]="twitchHosts" [seconds]="twitchSeconds" [mods]="twitchMods" [lastViewer]="twitchLastViewer" [lastMessage]="twitchLastMessage"></zenyatta-statistics>
+            <zenyatta-statistics [payload]="twitchPayload"></zenyatta-statistics>
             <zenyatta-show-chat [messages]="twitchArray"></zenyatta-show-chat>
         </div>
     </div>
+    {{ twitchPayload | json }}
 </zenyatta-layout>

@@ -53,6 +53,7 @@ import {
 } from '@core/classes';
 
 import Twitch from 'twitch-js';
+import { RestService } from '@core/services/rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -61,8 +62,11 @@ export class TwitchService {
   private twitchOptions: ITwitchOptions;
   twitchClient: Twitch.Client;
   twitchSubscription: Observable<any>;
+  apiSubscription: Observable<any>;
   allSubscriptions: any[];
   chatArray = [];
+
+  constructor(private restService: RestService) {}
 
   public init(): void {
     this.allSubscriptions = [];
@@ -231,6 +235,19 @@ export class TwitchService {
     });
 
     return this.twitchSubscription;
+  }
+
+  public getTwitchApi(endpoint?: string, method?) {
+    this.apiSubscription = new Observable(observer => {
+      if (method === 'GET') {
+        this.restService.getTwitchApi(endpoint).subscribe(data => {
+          observer.next(data);
+        });
+      }
+      // console.error('api call');
+    });
+    this.allSubscriptions.push(this.apiSubscription);
+    return this.apiSubscription;
   }
 
   private setTwitchSettings(): void {

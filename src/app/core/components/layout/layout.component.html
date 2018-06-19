@@ -1,8 +1,8 @@
 <div class="wrapper">
-    <div class="sidebar">
+    <div class="sidebar" *ngIf="showSidebar">
         SIDEBAR
     </div>
-    <div class="main-panel ps ps--active-y">
+    <div class="main-panel ps" [ngClass]="{'ps--active-y': showSidebar}">
         <!-- Navbar -->
         <ng-content></ng-content>
     </div>
