@@ -1,7 +1,12 @@
-<div class="col-12" *ngFor="let twitch of messages">
-    <zenyatta-join *ngIf="twitch.type === 'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
-    <zenyatta-part *ngIf="twitch.type === 'part'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-part>
-    <zenyatta-chat *ngIf="twitch.type === 'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
-    <zenyatta-hosted *ngIf="twitch.type === 'hosted'" [channel]="twitch.channel" [username]="twitch.username" [viewers]="twitch.viewers" [autohost]="twitch.autohost"></zenyatta-hosted>
-    <zenyatta-hosting *ngIf="twitch.type === 'hosting'" [channel]="twitch.channel" [target]="twitch.target" [viewers]="twitch.viewers"></zenyatta-hosting>
-</div>
+<ng-container *ngFor="let twitch of messages">
+  <div [ngSwitch]="twitch?.type" class="col-12">
+    <zenyatta-join *ngSwitchCase="'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
+    <zenyatta-part *ngSwitchCase="'part'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-part>
+    <zenyatta-chat *ngSwitchCase="'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
+    <zenyatta-hosted *ngSwitchCase="'hosted'" [channel]="twitch.channel" [username]="twitch.username" [viewers]="twitch.viewers" [autohost]="twitch.autohost"></zenyatta-hosted>
+    <zenyatta-hosting *ngSwitchCase="'hosting'" [channel]="twitch.channel" [target]="twitch.target" [viewers]="twitch.viewers"></zenyatta-hosting>
+    <div *ngSwitchDefault>
+      {{ twitch | json }}
+    </div>
+  </div>
+</ng-container>
