@@ -1,12 +1,15 @@
 <ng-container *ngFor="let twitch of messages">
-  <div [ngSwitch]="twitch?.type" class="col-12">
-    <zenyatta-join *ngSwitchCase="'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
-    <zenyatta-part *ngSwitchCase="'part'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-part>
-    <zenyatta-chat *ngSwitchCase="'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
-    <zenyatta-hosted *ngSwitchCase="'hosted'" [channel]="twitch.channel" [username]="twitch.username" [viewers]="twitch.viewers" [autohost]="twitch.autohost"></zenyatta-hosted>
-    <zenyatta-hosting *ngSwitchCase="'hosting'" [channel]="twitch.channel" [target]="twitch.target" [viewers]="twitch.viewers"></zenyatta-hosting>
-    <div *ngSwitchDefault>
-      {{ twitch | json }}
+    <div [ngSwitch]="twitch?.type" class="col-12">
+        <zenyatta-join *ngSwitchCase="'join'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-join>
+        <zenyatta-part *ngSwitchCase="'part'" [channel]="twitch.channel" [username]="twitch.username" [self]="twitch.self"></zenyatta-part>
+        <zenyatta-chat *ngSwitchCase="'chat'" [channel]="twitch.channel" [userstate]="twitch.userstate" [message]="twitch.message"></zenyatta-chat>
+        <zenyatta-hosted *ngSwitchCase="'hosted'" [channel]="twitch.channel" [username]="twitch.username" [viewers]="twitch.viewers" [autohost]="twitch.autohost"></zenyatta-hosted>
+        <zenyatta-hosting *ngSwitchCase="'hosting'" [channel]="twitch.channel" [target]="twitch.target" [viewers]="twitch.viewers"></zenyatta-hosting>
+        <zenyatta-connecting *ngSwitchCase="'connecting'" [address]="twitch.address" [port]="twitch.port"></zenyatta-connecting>
+        <zenyatta-connected *ngSwitchCase="'connected'" [address]="twitch.address" [port]="twitch.port"></zenyatta-connected>
+        <zenyatta-logon *ngSwitchCase="'logon'" [game]="payload.twitchGame" [title]="payload.twitchTitle" [channel]="payload.twitchChannel" [logo]="payload.twitchLogo" [followers]="payload.twitchFollowers"></zenyatta-logon>
+        <div *ngSwitchDefault>
+            {{ twitch | json }}
+        </div>
     </div>
-  </div>
 </ng-container>

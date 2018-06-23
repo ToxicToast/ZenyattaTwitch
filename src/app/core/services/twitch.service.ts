@@ -237,10 +237,14 @@ export class TwitchService {
     return this.twitchSubscription;
   }
 
-  public getTwitchApi(endpoint?: string, method?) {
+  public getTwitchApi(endpoint?: string, method?, body?) {
     this.apiSubscription = new Observable(observer => {
       if (method === 'GET') {
         this.restService.getTwitchApi(endpoint).subscribe(data => {
+          observer.next(data);
+        });
+      } else if (method === 'PUT') {
+        this.restService.putTwitchApi(endpoint, body).subscribe(data => {
           observer.next(data);
         });
       }

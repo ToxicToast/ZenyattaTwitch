@@ -24,4 +24,8 @@ export class RestService {
     return this.http.get(`${this.baseUrl}${endpoint}?client_id=${this.clientId}`);
   }
 
+  putTwitchApi(endpoint: string, data: any) {
+    return this.http.put(`${this.baseUrl}${endpoint}?client_id=${this.clientId}`, data);
+  }
+
 }

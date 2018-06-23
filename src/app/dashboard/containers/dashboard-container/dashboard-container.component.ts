@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TwitchService } from '../../../core/services/twitch.service';
+import { TwitchService } from '@core/services/twitch.service';
 import * as moment from 'moment';
 import { environment } from '@env/environment';
-import { IApiChannel } from '@core/dataContract';
+import { IApiChannel, IApiStream } from '@core/dataContract';
 
 
 
@@ -14,6 +14,7 @@ import { IApiChannel } from '@core/dataContract';
 export class DashboardContainerComponent implements OnInit, OnDestroy {
 
   twitchPayload = {
+    twitchChannel: '',
     twitchViewers: 0,
     twitchMessages: 0,
     twitchHosts: 0,
@@ -27,7 +28,8 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     twitchViews: 0,
     twitchLogo: 'n/a',
     twitchAge: 'n/a',
-    twitchPartner: false
+    twitchPartner: false,
+    twitchOnline: false
   };
 
   private seconds: number;
@@ -37,6 +39,7 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     private twitch: TwitchService
   ) {
     this.twitchPayload = {
+      twitchChannel: 'n/a',
       twitchViewers: 0,
       twitchMessages: 0,
       twitchHosts: 0,
@@ -50,7 +53,8 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
       twitchViews: 0,
       twitchLogo: 'n/a',
       twitchAge: 'n/a',
-      twitchPartner: false
+      twitchPartner: false,
+      twitchOnline: false
     };
     this.seconds = 0;
     this.twitchArray = [];
@@ -60,12 +64,14 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
     this.twitch.init();
     this.subscribeTo();
     this.getStreamTitle();
+    this.getStreamStatus();
     this.clockTick();
   }
 
   ngOnDestroy() {
     this.twitch.destroy();
     this.twitchPayload = {
+      twitchChannel: 'n/a',
       twitchViewers: 0,
       twitchMessages: 0,
       twitchHosts: 0,
@@ -79,7 +85,8 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
       twitchViews: 0,
       twitchLogo: 'n/a',
       twitchAge: 'n/a',
-      twitchPartner: false
+      twitchPartner: false,
+      twitchOnline: false
     };
     this.twitchArray = [];
   }
@@ -115,6 +122,7 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
   private getStreamTitle() {
     const channel = environment.twitch.username;
     this.twitch.getTwitchApi(`channels/${channel}`, 'GET').subscribe((data: IApiChannel) => {
+      this.twitchPayload.twitchChannel = `#${channel}`;
       this.twitchPayload.twitchTitle = data.status;
       this.twitchPayload.twitchGame = data.game;
       this.twitchPayload.twitchFollowers = data.followers;
@@ -122,6 +130,15 @@ export class DashboardContainerComponent implements OnInit, OnDestroy {
       this.twitchPayload.twitchAge = moment.duration(moment().diff(moment(data.created_at))).humanize();
       this.twitchPayload.twitchViews = data.views;
       this.twitchPayload.twitchPartner = data.partner;
+    });
+  }
+
+  private getStreamStatus() {
+    const channel = environment.twitch.username;
+    this.twitch.getTwitchApi(`streams/${channel}`, 'GET').subscribe((data: IApiStream) => {
+      if (data.stream) {
+        this.twitchPayload.twitchOnline = true;
+      }
     });
   }
 

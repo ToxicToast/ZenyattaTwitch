@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ShowChatComponent implements OnInit {
 
   @Input() messages: any[];
+  @Input() payload: any;
 
   constructor() { }
 
