@@ -1,10 +1,10 @@
 <zenyatta-layout>
     <div class="main-content">
         <div class="container-fluid">
-            <zenyatta-change-title-game [(title)]="twitchPayload.twitchTitle" [game]="twitchPayload.twitchGame"></zenyatta-change-title-game>
-            <zenyatta-stream-events></zenyatta-stream-events>
-            <!--<zenyatta-statistics [payload]="twitchPayload"></zenyatta-statistics>
-            <zenyatta-show-chat [messages]="twitchArray" [payload]="twitchPayload"></zenyatta-show-chat>-->
+            <!--<zenyatta-change-title-game [(title)]="twitchPayload.twitchTitle" [game]="twitchPayload.twitchGame"></zenyatta-change-title-game>
+            <zenyatta-stream-events></zenyatta-stream-events>-->
+            <zenyatta-statistics [payload]="twitchPayload"></zenyatta-statistics>
+            <zenyatta-show-chat [messages]="twitchArray" [payload]="twitchPayload"></zenyatta-show-chat>
         </div>
     </div>
     {{ twitchPayload | json }}

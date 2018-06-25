@@ -8,6 +8,7 @@
         <zenyatta-connecting *ngSwitchCase="'connecting'" [address]="twitch.address" [port]="twitch.port"></zenyatta-connecting>
         <zenyatta-connected *ngSwitchCase="'connected'" [address]="twitch.address" [port]="twitch.port"></zenyatta-connected>
         <zenyatta-logon *ngSwitchCase="'logon'" [game]="payload.twitchGame" [title]="payload.twitchTitle" [channel]="payload.twitchChannel" [logo]="payload.twitchLogo" [followers]="payload.twitchFollowers"></zenyatta-logon>
+        <zenyatta-disconnected *ngSwitchCase="'disconnected'" [reason]="twitch.reason"></zenyatta-disconnected>
         <div *ngSwitchDefault>
             {{ twitch | json }}
         </div>

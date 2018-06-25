@@ -33,4 +33,10 @@ export class ChangeTitleGameComponent implements OnInit {
       console.error(data);
     });
   }
+
+  authTwitch() {
+    this.twitch.getTwitchApi('oauth2/authorize', 'AUTH', {}).subscribe(data => {
+      console.error(data);
+    });
+  }
 }

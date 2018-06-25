@@ -247,6 +247,14 @@ export class TwitchService {
         this.restService.putTwitchApi(endpoint, body).subscribe(data => {
           observer.next(data);
         });
+      } else if (method === 'POST') {
+        this.restService.postTwitchApi(endpoint, body).subscribe(data => {
+          observer.next(data);
+        });
+      } else if (method === 'AUTH') {
+        this.restService.authTwitch(endpoint, body).subscribe(data => {
+          observer.next(data);
+        });
       }
       // console.error('api call');
     });
@@ -257,7 +265,8 @@ export class TwitchService {
   private setTwitchSettings(): void {
     this.twitchOptions = {
       options: {
-        debug: false
+        debug: false,
+        clientId: environment.twitch.clientID
       },
       connection: {
         reconnect: true,

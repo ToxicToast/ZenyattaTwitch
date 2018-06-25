@@ -15,4 +15,8 @@ export class ToasterService {
   showInfo(title: string, body?: string) {
     this.toastr.info(body, title);
   }
+
+  showWarning(title: string, body?: string) {
+    this.toastr.warning(body, title);
+  }
 }

@@ -17,6 +17,7 @@ import { LogonComponent } from '@core/components/logon/logon.component';
 
 import { MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { ToastrModule } from 'ngx-toastr';
+import { DisconnectedComponent } from './components/disconnected/disconnected.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     LayoutComponent,
     ConnectingComponent,
     ConnectedComponent,
-    LogonComponent
+    LogonComponent,
+    DisconnectedComponent
   ],
   providers: [
     TwitchService,
@@ -57,7 +59,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    LogonComponent
+    LogonComponent,
+    DisconnectedComponent
   ]
 })
 export class CoreModule { }
